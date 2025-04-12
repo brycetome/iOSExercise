@@ -3,7 +3,7 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+    <entity name="Recipe1" representedClassName="Recipe1" syncable="YES" codeGenerationType="class">
         <attribute name="cuisine" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="photo_url_large" optional="YES" attributeType="String"/>
