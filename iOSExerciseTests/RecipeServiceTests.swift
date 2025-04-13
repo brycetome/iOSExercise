@@ -11,7 +11,8 @@ import Foundation
 @testable import iOSExercise
 
 struct RecipeServiceTests {
-
+    let recipesCount = 63
+    
     @Test func RecipesCount() async throws {
         let recipes = try await fetchAllRecipes()
         #expect(recipes.count == recipesCount)

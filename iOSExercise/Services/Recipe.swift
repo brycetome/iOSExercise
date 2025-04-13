@@ -42,7 +42,7 @@ public struct RecipeGroup {
     var title: String
 }
 
-let recipe1 = Recipe(cuisine: "Malaysian",
+public let recipe1 = Recipe(cuisine: "Malaysian",
                      name: "Apam Balik",
                      photo_url_large: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/b9ab0071-b281-4bee-b361-ec340d405320/large.jpg",
                      photo_url_small: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/b9ab0071-b281-4bee-b361-ec340d405320/small.jpg",

@@ -44,7 +44,6 @@ public func getImage(imageName: String, urlString: String?) async -> Data? {
               let retImageData = await retrieveImage(urlString: urlString) {
         imageData = retImageData
         cacheImage(urlPath: path, imageData: retImageData)
-
     }
     
     return imageData
