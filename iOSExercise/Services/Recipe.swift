@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RecipeDTO: Codable, Equatable {
+public struct Recipe: Codable, Equatable {
     var cuisine: String
     var name: String
     var photo_url_large: String?
@@ -37,4 +37,15 @@ public struct RecipeDTO: Codable, Equatable {
     }
 }
 
-public struct RecipeDTO
+public struct RecipeGroup {
+    var recipes: [Recipe]
+    var title: String
+}
+
+let recipe1 = Recipe(cuisine: "Malaysian",
+                     name: "Apam Balik",
+                     photo_url_large: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/b9ab0071-b281-4bee-b361-ec340d405320/large.jpg",
+                     photo_url_small: "https://d3jbb8n5wk0qxi.cloudfront.net/photos/b9ab0071-b281-4bee-b361-ec340d405320/small.jpg",
+                     uuid: "0c6ca6e7-e32a-4053-b824-1dbf749910d8",
+                     source_url: "https://www.nyonyacooking.com/recipes/apam-balik~SJ5WuvsDf9WQ",
+                     youtube_url: "https://www.youtube.com/watch?v=6R8ffRRJcrg")
