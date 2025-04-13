@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     @ObservedObject private var ViewModel = ContentViewModel()
+    @State private var selectedEndpoint: RecipeEndpoint = .All
+    @State private var errorMessage: String?
 
     var body: some View {
         NavigationStack {
@@ -22,20 +24,28 @@ struct ContentView: View {
                 )
             }
             .navigationTitle("Recipes")
+            .toolbar {
+                EndpointPicker(selectedEndpoint: $selectedEndpoint)
+                    .onChange(of: selectedEndpoint) { _ in
+                        Task { await refreshRecipes() }
+                    }
+            }
             .searchable(text: $ViewModel.searchText)
             .overlay {
-                if ViewModel.searchResults.isEmpty, !ViewModel.searchText.isEmpty {
+                if ViewModel.searchResults.isEmpty {
                     VStack{
-                        Image(systemName: "magnifyingglass")
+                        Image(systemName: "tray")
                             .resizable()
                             .frame(width: 25, height: 25)
                         Text("No results")
+                        if let errorMessage = errorMessage {
+                            Text(errorMessage)
+                        }
                     }
                 }
             }
             .task {
                 await refreshRecipes()
-
             }
             .refreshable {
                 await refreshRecipes()
@@ -44,18 +54,14 @@ struct ContentView: View {
     }
     
     private func refreshRecipes() async {
-        Task{
-            ViewModel.recipes = try await fetchAllRecipes()
+        errorMessage = nil
+        do {
+            try await ViewModel.refresh(recipesFor: selectedEndpoint)
+        } catch {
+            errorMessage = "Something went wrong."
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
     ContentView()

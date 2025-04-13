@@ -7,10 +7,10 @@
 
 import Foundation
 
+@MainActor
 public class ContentViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var recipes: [Recipe] = []
-
     
     var searchResults: [Recipe] {
         let recipes = recipes.sorted { $0.name < $1.name }
@@ -21,5 +21,13 @@ public class ContentViewModel: ObservableObject {
             return recipes.filter { $0.name.contains(searchText) }
         }
     }
+    
+    func refresh(recipesFor: RecipeEndpoint) async throws {
+        do {
+            recipes = try await recipesFor.getRecipes()
+        } catch {
+            recipes.removeAll()
+            throw error
+        }
+    }
 }
-

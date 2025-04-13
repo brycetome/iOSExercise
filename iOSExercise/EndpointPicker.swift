@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct EndpointPicker: View {
+    @Binding var selectedEndpoint: RecipeEndpoint
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Menu(content: {
+            Picker(selection: $selectedEndpoint, label: Image(selectedEndpoint.imageName)) {
+                ForEach(RecipeEndpoint.allCases, id: \.rawValue) { item in
+                    Label(item.rawValue, systemImage: item.imageName).tag(item)
+                }
+            }
+        }, label: { Label("Endpoint", systemImage: selectedEndpoint.imageName)})
     }
 }
 
 #Preview {
-    EndpointPicker()
+    EndpointPicker(selectedEndpoint: .constant(.All))
 }

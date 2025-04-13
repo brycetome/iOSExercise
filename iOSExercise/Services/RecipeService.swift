@@ -7,6 +7,34 @@
 
 import Foundation
 
+enum RecipeEndpoint: String, CaseIterable {
+    case All = "All"
+    case Malformed = "Malformed"
+    case Empty = "Empty"
+    
+    var imageName: String {
+        switch self {
+        case .All:
+            return "tray.full"
+        case .Malformed:
+            return "exclamationmark.circle"
+        case .Empty:
+            return "tray"
+        }
+    }
+    
+    func getRecipes() async throws -> [Recipe] {
+        switch self {
+        case .All:
+            return try await fetchAllRecipes()
+        case .Malformed:
+            return try await fetchMalformedRecipes()
+        case .Empty:
+            return try await fetchEmptyRecipes()
+        }
+    }
+}
+
 public struct RecipeResponse: Codable {
     var recipes: [Recipe]
 }
