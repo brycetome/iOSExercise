@@ -40,11 +40,6 @@
 			path = iOSExerciseTests;
 			sourceTree = "<group>";
 		};
-		C31572732DAADC5300783AAF /* iOSExerciseUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = iOSExerciseUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +72,6 @@
 			children = (
 				C31572562DAADC5200783AAF /* iOSExercise */,
 				C31572692DAADC5300783AAF /* iOSExerciseTests */,
-				C31572732DAADC5300783AAF /* iOSExerciseUITests */,
 				C31572552DAADC5200783AAF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,9 +146,6 @@
 			);
 			dependencies = (
 				C31572722DAADC5300783AAF /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				C31572732DAADC5300783AAF /* iOSExerciseUITests */,
 			);
 			name = iOSExerciseUITests;
 			packageProductDependencies = (
