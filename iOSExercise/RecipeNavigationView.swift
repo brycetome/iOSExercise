@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeNavigationView: View {
-    @Binding var recipe: Recipe
+    var recipe: Recipe
     @State private var ImageData: Data?
     
     var body: some View {
@@ -35,5 +35,5 @@ struct RecipeNavigationView: View {
 
 #Preview {
     
-    RecipeNavigationView(recipe: .constant(recipe1))
+    RecipeNavigationView(recipe: recipe1)
 }

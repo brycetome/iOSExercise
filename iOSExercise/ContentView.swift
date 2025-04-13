@@ -17,10 +17,8 @@ struct ContentView: View {
         NavigationStack {
             List(ViewModel.searchResults, id: \.uuid) { recipe in
                 NavigationLink(
-                    destination: RecipeView(recipe: .constant(recipe)),
-                    label: {
-                        RecipeNavigationView(recipe: .constant(recipe))
-                    }
+                    destination: RecipeView(recipe: recipe),
+                    label: { RecipeNavigationView(recipe: recipe) }
                 )
             }
             .navigationTitle("Recipes")

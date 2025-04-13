@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeView: View {
-    @Binding var recipe: Recipe
+    var recipe: Recipe
     @State private var ImageData: Data?
     
     var body: some View {
@@ -49,5 +49,5 @@ struct RecipeView: View {
 }
 
 #Preview {
-    RecipeView(recipe: .constant(recipe1))
+    RecipeView(recipe: recipe1)
 }
